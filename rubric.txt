@@ -1,0 +1,12 @@
+	◦	5p rubric
+	◦	10 could show events
+	◦	10 could submit corp request form
+	◦	10 login /sign up
+	◦	10 the organization hq user could log in and jump to the system page to see all request and decide to approve or not.
+	◦	10p React
+	◦	10p MongoDB
+	◦	10p database is configured correctly 
+	◦	20p creative portion (dark mode, Christmas vibe bgm, others TBD)
+	◦	5 cool styling
+
+Approved by Cheng
