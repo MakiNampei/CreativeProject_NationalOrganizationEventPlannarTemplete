@@ -1,23 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <header className="app-header">
+        <h1>National Chapters Map</h1>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Explore where our organization has chapters across universities, and
+          see their events & collaboration opportunities.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+
+      <main className="app-main">
+        <section className="card">
+          <h2>1. Map of Universities</h2>
+          <p>
+            Here we will show a map with markers for each university that has a
+            chapter (React + map API).
+          </p>
+        </section>
+
+        <section className="card">
+          <h2>2. Upcoming Events</h2>
+          <p>
+            We will list upcoming events from different chapters, with time,
+            place, and whether they are open for collaboration.
+          </p>
+        </section>
+
+        <section className="card">
+          <h2>3. HQ Dashboard</h2>
+          <p>
+            HQ users can log in, see all collaboration requests, and approve or
+            reject them.
+          </p>
+        </section>
+      </main>
+
+      <footer className="app-footer">
+        <small> 2025 National Student Organization</small>
+      </footer>
     </div>
   );
 }
