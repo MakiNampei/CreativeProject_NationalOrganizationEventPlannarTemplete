@@ -1,46 +1,29 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
+
+import NavBar from "./components/NavBar";
+import HomePage from "./pages/HomePage";
+import MapPage from "./pages/MapPage";
+import EventsPage from "./pages/EventsPage";
+import ChapterDetailPage from "./pages/ChapterDetailPage";
+import LoginPage from "./pages/LoginPage";
+import HQDashboardPage from "./pages/HQDashboardPage";
 
 function App() {
   return (
     <div className="App">
-      <header className="app-header">
-        <h1>National Chapters Map</h1>
-        <p>
-          Explore where our organization has chapters across universities, and
-          see their events & collaboration opportunities.
-        </p>
-      </header>
-
+      <NavBar />
       <main className="app-main">
-        <section className="card">
-          <h2>1. Map of Universities</h2>
-          <p>
-            Here we will show a map with markers for each university that has a
-            chapter (React + map API).
-          </p>
-        </section>
-
-        <section className="card">
-          <h2>2. Upcoming Events</h2>
-          <p>
-            We will list upcoming events from different chapters, with time,
-            place, and whether they are open for collaboration.
-          </p>
-        </section>
-
-        <section className="card">
-          <h2>3. HQ Dashboard</h2>
-          <p>
-            HQ users can log in, see all collaboration requests, and approve or
-            reject them.
-          </p>
-        </section>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/map" element={<MapPage />} />
+          <Route path="/events" element={<EventsPage />} />
+          <Route path="/chapters/:id" element={<ChapterDetailPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/hq" element={<HQDashboardPage />} />
+        </Routes>
       </main>
-
-      <footer className="app-footer">
-        <small> 2025 National Student Organization</small>
-      </footer>
     </div>
   );
 }
