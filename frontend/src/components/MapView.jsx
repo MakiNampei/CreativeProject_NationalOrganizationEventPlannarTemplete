@@ -4,8 +4,8 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { useNavigate } from "react-router-dom";
 
+// Fix for default Leaflet icon issues
 delete L.Icon.Default.prototype._getIconUrl;
-
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
@@ -15,10 +15,13 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
-function MapView({ chapters }) {
+// SAFETY FIX: Added 'chapters = []' in the parentheses below
+function MapView({ chapters = [] }) {
   const navigate = useNavigate();
-
   const center = [39.8283, -98.5795]; 
+
+  // Extra Safety: Ensure we always have an array
+  const validChapters = Array.isArray(chapters) ? chapters : [];
 
   return (
     <div style={{ height: "400px", width: "100%", borderRadius: "12px", overflow: "hidden" }}>
@@ -27,8 +30,8 @@ function MapView({ chapters }) {
           attribution='&copy; OpenStreetMap'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {chapters.map((ch) => (
-          <Marker key={ch.id} position={[ch.lat, ch.lng]}>
+        {validChapters.map((ch) => (
+          <Marker key={ch._id} position={[ch.lat, ch.lng]}>
             <Popup>
               <strong>{ch.schoolName}</strong>
               <br />
@@ -36,7 +39,7 @@ function MapView({ chapters }) {
               <br />
               <button
                 style={{ marginTop: "4px", fontSize: "0.8rem" }}
-                onClick={() => navigate(`/chapters/${ch.id}`)}
+                onClick={() => navigate(`/chapters/${ch._id}`)}
               >
                 View chapter
               </button>
