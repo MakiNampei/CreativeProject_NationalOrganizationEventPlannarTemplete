@@ -44,3 +44,27 @@
   background: #38bdf8;
   color: #020617;
 }
+body.light-mode .nav-header {
+  background: #ffffff;
+  border-bottom-color: rgba(148, 163, 184, 0.6);
+}
+
+body.light-mode .nav-logo span {
+  color: #111827;
+}
+
+body.light-mode .nav-links a,
+body.light-mode .nav-auth a {
+  color: #111827;
+}
+
+body.light-mode .nav-links a.active,
+body.light-mode .nav-auth a.active {
+  background: #111827;
+  color: #f9fafb;
+}
+
+body.light-mode .nav-toggle {
+  background: rgba(148, 163, 184, 0.2);
+  color: #111827;
+}

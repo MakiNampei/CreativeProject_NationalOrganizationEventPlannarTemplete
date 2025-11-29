@@ -53,3 +53,34 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+body.light-mode {
+  background: #f9fafb;
+  color: #111827; 
+}
+
+body.light-mode .App {
+  background: #f9fafb;
+  color: #111827;
+}
+
+body.light-mode .card {
+  background: #ffffff;
+  color: #111827;
+  border-color: rgba(148, 163, 184, 0.6);
+}
+
+body.light-mode .card h1,
+body.light-mode .card h2,
+body.light-mode .card h3,
+body.light-mode .card p,
+body.light-mode .card li {
+  color: #111827;
+}
+
+body.light-mode .app-main h1,
+body.light-mode .app-main h2,
+body.light-mode .app-main h3,
+body.light-mode .app-main p,
+body.light-mode .app-main li {
+  color: #111827;
+}

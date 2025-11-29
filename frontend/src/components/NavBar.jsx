@@ -1,13 +1,21 @@
-
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./NavBar.css"; 
 
 function NavBar() {
   const location = useLocation();
 
+  const [dark, setDark] = useState(true);
+
+  useEffect(() => {
+    document.body.classList.toggle("light-mode", !dark);
+  }, [dark]);
+
   const isActive = (path) => location.pathname === path;
 
+  function handleToggleDark() {
+    setDark((prev) => !prev);
+  }
   return (
     <header className="nav-header">
       <div className="nav-inner">
@@ -29,6 +37,9 @@ function NavBar() {
           </Link>
         </nav>
         <div className="nav-auth">
+          <button className="nav-toggle" onClick={handleToggleDark}>
+            {dark ? "☾ Dark" : "☀ Light"}
+          </button>
           <Link className={isActive("/login") ? "active" : ""} to="/login">
             Login
           </Link>
