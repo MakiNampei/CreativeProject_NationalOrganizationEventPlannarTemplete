@@ -68,3 +68,23 @@ body.light-mode .nav-toggle {
   background: rgba(148, 163, 184, 0.2);
   color: #111827;
 }
+.nav-toggle {
+  border: none;
+  outline: none;
+  background: rgba(148, 163, 184, 0.2);
+  color: #e5e7eb;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nav-toggle:hover {
+  background: rgba(148, 163, 184, 0.4);
+}
+
+.bgm-btn {
+  font-size: 0.8rem;
+}

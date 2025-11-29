@@ -7,17 +7,57 @@ function NavBar() {
 
   const [dark, setDark] = useState(true);
 
+  const [isPlaying, setIsPlaying] = useState(false);
+
   useEffect(() => {
     document.body.classList.toggle("light-mode", !dark);
   }, [dark]);
 
+   useEffect(() => {
+    const audio = document.getElementById("bgm-audio");
+    if (!audio) return;
+
+    audio.volume = 0.4;
+
+    audio
+      .play()
+      .then(() => {
+        setIsPlaying(true);
+      })
+      .catch(() => {
+        setIsPlaying(false);
+      });
+  }, []);
   const isActive = (path) => location.pathname === path;
 
   function handleToggleDark() {
     setDark((prev) => !prev);
   }
+
+  function handleToggleBgm() {
+    const audio = document.getElementById("bgm-audio");
+    if (!audio) return;
+
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((err) => {
+          console.log("Audio play blocked:", err);
+        });
+    }
+  }
+
   return (
     <header className="nav-header">
+      <audio id="bgm-audio" loop>
+        <source src="/bgm.mp3" type="audio/mpeg" />
+      </audio>
       <div className="nav-inner">
         <div className="nav-logo">
           <span>OrgMap</span>
@@ -39,6 +79,9 @@ function NavBar() {
         <div className="nav-auth">
           <button className="nav-toggle" onClick={handleToggleDark}>
             {dark ? "☾ Dark" : "☀ Light"}
+          </button>
+          <button className="nav-toggle bgm-btn" onClick={handleToggleBgm}>
+            {isPlaying ? "⏸ BGM" : "▶ BGM"}
           </button>
           <Link className={isActive("/login") ? "active" : ""} to="/login">
             Login
